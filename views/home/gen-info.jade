@@ -1,0 +1,127 @@
+form#performance-info(action='/', method='post')
+  fieldset
+    legend Performance Details
+    .row
+      mixin field(4, 'text', 'artist', null, null, 'Artist')
+      mixin field(4, 'text', 'showdate', null, null, 'Show Date')
+      mixin field(4, 'text', 'doors', null, null, 'Doors Open')
+    .row
+      .small-4.columns
+        input(type='text', placeholder='Start Time')
+    .row
+      .small-4.columns
+        p <strong>Show type:</strong>
+      .small-2.columns
+        input(type='radio', name='showtype', value='Public') Public
+        p Public Appearance
+      .small-2.columns
+        input(type='radio', name='showtype', value='Private') Private
+        p Private Engagement
+      .small-6.columns
+    .row
+      mixin field(3, 'text', 'buyer', null, null, 'Buyer Company Name')
+      mixin field(3, 'text', 'signatory', null, null, 'Signatory Name')
+      mixin field(3, 'text', 'firstname', null, null, 'Contact First Name')
+      mixin field(3, 'text', 'lastname', null, null, 'Contact Last Name')
+    .row
+      mixin field(12, 'text', 'mailingAddress', null, null, 'Mailing Address')
+    .row
+      mixin field(6, 'text', 'mailToCity', null, null, 'City')
+      mixin field(3, 'text', 'mailToState', null, null, 'State')
+      mixin field(3, 'text', 'mailToZip', null, null, 'Zip Code')
+    .row
+      mixin field(6, 'text', 'contactPhone', null, null, 'Contact Phone')
+      mixin field(6, 'text', 'contactEmail', null, null, 'Contact Email')
+    .row
+      .small-5.columns
+        p <strong>Preferred contact method for ticket counts:</strong>
+      .small-1.columns
+        input(type='radio', name='showtype', value='SMS') SMS
+        p SMS
+      .small-1.columns
+        input(type='radio', name='showtype', value='Phone') Phone
+        p Phone
+      .small-1.columns
+        input(type='radio', name='showtype', value='Email') Email
+        p Email
+      .small-4.columns
+    .row
+      mixin field(12, 'text', 'venueAddress', null, null, 'Venue Address')
+    .row
+      mixin field(3, 'text', 'venueCity', null, null, 'City')
+      mixin field(3, 'text', 'venueState', null, null, 'State')
+      mixin field(3, 'text', 'venueZip', null, null, 'Zip Code')
+      mixin field(3, 'text', 'venuePhone', null, null, 'Phone')
+    .row
+      mixin field(3, 'text', 'venueCap', null, null, 'Venue Capacity')
+      mixin field(3, 'text', 'salesTax', null, null, 'Sales Tax')
+      .small-6.columns
+    .row
+      .small-3.columns
+        p <strong>Seating type:</strong>
+      .small-1.columns
+        input(type='radio', name='showtype', value='GA') GA
+        p GA
+      .small-1.columns
+        input(type='radio', name='showtype', value='Private') Reserved
+        p Reserved
+      .small-7.columns
+    .row
+      .small-12.columns
+        p <strong>Ticket Scaling:</strong>
+    .row
+      .small-2.columns
+        select#scaling
+          option(value='advance') Advance
+          option(value='dayOfShow') Day of Show
+          option(value='goldCircle') Gold Circle
+          option(value='group') Group
+          option(value='student') Student
+      .small-2.columns
+        input(type='text', placeholder='Enter Price')
+      .small-1.columns
+        input.button.tiny(type='button', value='Add Scaling')
+      .small-7.columns
+        #scaling
+      .row
+        .small-12.columns
+          p#terms <strong>Offer Terms:</strong>
+      .row
+        .small-2.columns
+          p.left Guarantee:
+        .small-2.columns
+          input#guaranteeOffer(type='text', placeholder='Guarantee')
+        .small-2.columns
+          select#guarantee
+            option(value='flat') flat
+            option(value='plus') plus
+            option(value='goldCircle') versus
+        .small-1.columns
+          input.hidden(type='text', placeholder='85%')
+        .small-3.columns
+          select.hidden
+            option(value='gross') Gross Box Office Receipts
+            option(value='net') Net Box Office Receipts
+        .small-2.columns
+      .row
+        .small-2.columns
+          p.left Billing:
+        .small-2.columns
+          input(type='text', placeholder='Headline')
+        .small-2.columns
+          p.left Support:
+        .small-4.columns
+          input(type='text', placeholder='Support Details')
+        .small-2.columns
+      .row
+        .small-3.columns
+          p.left Merchandise to be sold by:
+        .small-2.columns
+          select#merchSoldBy
+            option(value='artist') Artist
+            option(value='venue') Venue
+        .small-4.columns
+          p Percentage merchandise to Venue:
+        .small-1.columns
+          input(type='text', placeholder='25%')
+        .small-2.columns
