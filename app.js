@@ -25,6 +25,7 @@ app.get('/inquiry', inquiry.index);
 app.get('/overview', account.overview);
 app.post('/overview', account.new);
 app.post('/offerdetails', offer.details);
+app.get('/offerdetails', offer.show);
 
 
 // start server & socket.io
