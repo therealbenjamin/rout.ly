@@ -1,4 +1,4 @@
-/* global document, window, io, getValue */
+/* global document, window, io */
 
 $(document).ready(initialize);
 
@@ -7,8 +7,6 @@ var socket;
 function initialize(){
   $(document).foundation();
   initializeSocketIO();
-  $('form#performance-info').on('submit', submitOffer);
-  $('form#buyer-details').on('submit', submitBuyerDetails);
 }
 
 function initializeSocketIO(){
@@ -26,22 +24,6 @@ function socketConnected(data){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-function submitOffer(){
-  var artist = getValue('input[name="artist"]');
-  var showDate = getValue('input[name="showDate"]');
-  var guarantee = getValue('input[name="showDate"]');
-  var dealStructure = $('#deal_structure').val();
-  var bonusDeal = getValue('#bonusDeal');
-  var boxOffice = $('#box_office').val();
-  var radius = getValue('input[name="radius"]');
-  var daysPrior = getValue('input[name="daysPrior"]');
-  var daysAfter = getValue('input[name="daysAfter"]');
-}
-
-function submitBuyerDetails(){
-
-}
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
