@@ -8,6 +8,7 @@ function initialize(){
   $(document).foundation();
   initializeSocketIO();
   $('form#performance-info').on('submit', submitOffer);
+  $('form#buyer-details').on('submit', submitBuyerDetails);
 }
 
 function initializeSocketIO(){
@@ -27,6 +28,10 @@ function socketConnected(data){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 function submitOffer(){
+
+}
+
+function submitBuyerDetails(){
 
 }
 
