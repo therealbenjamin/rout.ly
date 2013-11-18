@@ -21,6 +21,9 @@ app.get('/', home.index);
 app.get('/createaccount', account.create);
 app.get('/newoffer', offer.index);
 app.get('/overview', account.overview);
+app.post('/overview', account.overview);
+app.post('/offerdetails', offer.details);
+
 
 // start server & socket.io
 var common = require('./sockets/common');
