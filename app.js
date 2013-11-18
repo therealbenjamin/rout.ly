@@ -6,6 +6,7 @@ require('require-dir')('./models');
 
 // route definitions
 var home = require('./routes/home');
+var offer = require('./routes/offer');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
@@ -16,6 +17,8 @@ require('./config').initialize(app, RedisStore);
 
 // routes
 app.get('/', home.index);
+// app.get('/createaccount', account.create);
+app.get('/newoffer', offer.index);
 
 // start server & socket.io
 var common = require('./sockets/common');
