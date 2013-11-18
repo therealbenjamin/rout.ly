@@ -5,3 +5,7 @@ exports.create = function(req, res){
 exports.overview = function(req, res){
   res.render('account/overview', {title: 'Rout.ly'});
 };
+
+exports.new = function(req, res){
+  res.redirect('/overview');
+}

@@ -8,6 +8,7 @@ require('require-dir')('./models');
 var home = require('./routes/home');
 var offer = require('./routes/offer');
 var account = require('./routes/account');
+var inquiry = require('./routes/inquiry');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
@@ -20,8 +21,9 @@ require('./config').initialize(app, RedisStore);
 app.get('/', home.index);
 app.get('/createaccount', account.create);
 app.get('/newoffer', offer.index);
+app.get('/inquiry', inquiry.index);
 app.get('/overview', account.overview);
-app.post('/overview', account.overview);
+app.post('/overview', account.new);
 app.post('/offerdetails', offer.details);
 
 
