@@ -8,4 +8,4 @@ exports.overview = function(req, res){
 
 exports.new = function(req, res){
   res.redirect('/overview');
-}
+};

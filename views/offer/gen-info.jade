@@ -3,18 +3,18 @@ form#performance-info(action='/offerdetails', method='post')
     legend Performance Details
     .row
       mixin field(4, 'text', 'artist', null, null, 'Artist')
-      mixin field(4, 'text', 'date', null, null, 'Show Date')
+      mixin field(4, 'text', 'showDate', null, null, 'Show Date')
       .small-4.columns
     .row
       .small-2.columns
-        input(type='text', placeholder='Guarantee')
+        input(type='text', placeholder='Guarantee', name="guarantee")
       .small-2.columns
         select#deal_structure
           option(value='flat') flat
           option(value='plus') plus
           option(value='versus') versus
       .small-2.columns
-        input#bonus_deal(type='text', placeholder='85%')
+        input#bonus_deal(type='text', placeholder='85%', name='bonusDeal')
       .small-3.columns
         select#box_office
           option(value='gross') Gross Box Office Receipts
@@ -22,15 +22,15 @@ form#performance-info(action='/offerdetails', method='post')
       .small-3.columns
     .row
       .small-3.columns
-        input#radius(type='text', placeholder='Radius')
+        input#radius(type='text', placeholder='Radius', name='radius')
       .small-1.columns
         p miles
       .small-1.columns
-        input#days_prior(type='text', placeholder='60')
+        input#days_prior(type='text', placeholder='60', name='daysPrior')
       .small-3.columns
         p days prior to event,
       .small-1.columns
-        input#days_after(type='text', placeholder='30')
+        input#days_after(type='text', placeholder='30', name='daysAfter')
       .small-2.columns
         p days after event
       .small-2.columns

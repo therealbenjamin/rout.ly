@@ -1,4 +1,4 @@
-/* global document, window, io */
+/* global document, window, io, getValue */
 
 $(document).ready(initialize);
 
@@ -28,7 +28,15 @@ function socketConnected(data){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 function submitOffer(){
-
+  var artist = getValue('input[name="artist"]');
+  var showDate = getValue('input[name="showDate"]');
+  var guarantee = getValue('input[name="showDate"]');
+  var dealStructure = $('#deal_structure').val();
+  var bonusDeal = getValue('#bonusDeal');
+  var boxOffice = $('#box_office').val();
+  var radius = getValue('input[name="radius"]');
+  var daysPrior = getValue('input[name="daysPrior"]');
+  var daysAfter = getValue('input[name="daysAfter"]');
 }
 
 function submitBuyerDetails(){

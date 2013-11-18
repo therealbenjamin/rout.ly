@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Offer = mongoose.Schema({
   artist        : String,
-  showDate      : Date,
+  showDate      : String,
   guarantee     : Number,
   dealStructure : String,
   bonusDeal     : Number,
