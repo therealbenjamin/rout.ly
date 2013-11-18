@@ -20,6 +20,7 @@ require('./config').initialize(app, RedisStore);
 app.get('/', home.index);
 app.get('/createaccount', account.create);
 app.get('/newoffer', offer.index);
+app.get('/overview', account.overview);
 
 // start server & socket.io
 var common = require('./sockets/common');
