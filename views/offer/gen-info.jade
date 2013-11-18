@@ -2,8 +2,10 @@ form#performance-info(action='/offerdetails', method='post')
   fieldset
     legend Performance Details
     .row
-      mixin field(4, 'text', 'artist', null, null, 'Artist')
-      mixin field(4, 'text', 'showDate', null, null, 'Show Date')
+      .small-4.columns
+        input(type='text', name='artist', placeholder='Artist' autofocus=true)
+      .small-4.columns
+        input.date(type='text', name='showDate', placeholder='Show Date')
       .small-4.columns
     .row
       .small-2.columns
