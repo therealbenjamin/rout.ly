@@ -7,6 +7,7 @@ var socket;
 function initialize(){
   $(document).foundation();
   initializeSocketIO();
+  $('form#performance-info').on('submit', submitOffer);
 }
 
 function initializeSocketIO(){
@@ -25,7 +26,11 @@ function socketConnected(data){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-
+function submitOffer(e){
+  submitAjaxForm(e, this, function(data, status, jqXHR){
+    htmlAddPriorityToSelect(data);
+  });
+}
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
