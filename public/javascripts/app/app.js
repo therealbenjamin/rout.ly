@@ -26,10 +26,8 @@ function socketConnected(data){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-function submitOffer(e){
-  submitAjaxForm(e, this, function(data, status, jqXHR){
-    htmlAddPriorityToSelect(data);
-  });
+function submitOffer(){
+
 }
 
 
