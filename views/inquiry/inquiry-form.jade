@@ -1,0 +1,46 @@
+form#inquiry-form(action='/inquiry', method='post')
+  fieldset
+    legend Inquiry Form
+    .row
+      .small-4.columns
+        input(type='text', name='name', placeholder='Name')
+      .small-4.columns
+        input(type='text', name='organization', placeholder='Organization')
+      .small-4.columns
+        input(type='text', name='title', placeholder='Title/Postion')
+    .row
+      .small-8.columns
+        input(type='text', name='address', placeholder='Address')
+      .small-4.columns
+    .row
+      .small-6.columns
+        input(type='text', name='city', placeholder='City')
+      .small-2.columns
+        input(type='text', name='state', placeholder='State')
+      .small-4.columns
+        input(type='text', name='zip', placeholder='Zip Code')
+    .row
+      .small-2.columns
+        input(type='text', name='capacity', placeholder='Seating Capacity')
+      .small-2.columns
+        input(type='text', name='officePhone', placeholder='Office Phone')
+      .small-2.columns
+        input(type='text', name='cellPhone', placeholder='Cell Phone')
+      .small-6.columns
+        input(type='text', name='email', placeholder='Email Address')
+    .row
+      .small-12.columns
+        textarea#artists-of-interest(type='text', name='artistsOfInterest', placeholder='Artists of interest:')
+    .row
+      .small-12.columns
+        textarea#promoter-history(type='text', name='promoterHistory', placeholder='Shows promoted in the past:')
+    .row
+      .small-12.columns
+        textarea#approximate-budget(type='text', name='approximateBudget', placeholder='Approximate budget for show:')
+    .row
+      .small-12.columns
+        textarea#additional-info(type='text', name='additionalInfo', placeholder='Message to Booking Agent:')
+    .row
+      .small-2.small-offset-10.columns: button.radius.small.expand(type='submit') Save
+
+
