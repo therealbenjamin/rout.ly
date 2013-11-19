@@ -9,6 +9,11 @@ function initialize(){
   initializeSocketIO();
   initializeMap();
   google.maps.event.addDomListener(window, 'load', initialize);
+  $('#authentication-button').on('click', clickAuth);
+}
+
+function clickAuth(){
+  alert('CLICKED!!');
 }
 
 function initializeSocketIO(){

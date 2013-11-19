@@ -6,7 +6,6 @@
       li.toggle-topbar.menu-icon
         a(href="#")
           span Menu
-
     section.top-bar-section
       ul.left
       ul.right
@@ -14,4 +13,4 @@
         if user
           li.has-form: a#authentication-button.button.radius.alert(href="#", data-email=user.email)= user.email
         else
-          li.has-form: a#authentication-button.button.radius(href="#", data-email="anonymous") Login | Sign Up
+          li.has-form: a#authentication-button.button.radius(href="#", data-email="anonymous") Login
