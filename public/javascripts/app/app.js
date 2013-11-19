@@ -12,8 +12,8 @@ function initialize(){
   $('#authentication-button').on('click', clickAuth);
 }
 
-function clickAuth(){
-  alert('CLICKED!!');
+function clickAuth(e){
+
 }
 
 function initializeSocketIO(){
