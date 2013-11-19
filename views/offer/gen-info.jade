@@ -37,7 +37,21 @@ form#performance-info(action='/offerdetails', method='post')
         p days after event
       .small-2.columns
     .row
+      .small-8.columns
+        input(type='text', name='address', placeholder='Address')
+      .small-4.columns
+    .row
+      .small-6.columns
+        input(type='text', name='city', placeholder='City')
+      .small-2.columns
+        input(type='text', name='state', placeholder='State')
+      .small-4.columns
+        input(type='text', name='zip', placeholder='Zip Code')
+    .row
       .small-2.small-offset-10.columns: button.radius.small.expand(type='submit') Save
+
+
+
 
 
 

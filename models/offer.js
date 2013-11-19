@@ -10,6 +10,9 @@ var Offer = mongoose.Schema({
   radius        : Number,
   daysPrior     : Number,
   daysAfter     : Number,
+  city          : String,
+  state         : String,
+  zip           : Number,
   isConfirmed : {type: Boolean, default: false},
   createdAt: {type: Date, default: Date.now}
 });
