@@ -14,9 +14,8 @@ function initialize(){
 }
 
 
-function clickAuth(e){
+function clickAuth(){
   $('#authentication').toggleClass('hidden');
-  e.preventDefault();
 }
 
 function initializeSocketIO(){
