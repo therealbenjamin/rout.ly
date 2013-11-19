@@ -21,8 +21,8 @@ function initializeSocketIO(){
 
 function initializeMap(){
   var mapOptions = {
-    center: new google.maps.LatLng(-34.397, 150.644),
-    zoom: 4,
+    center: new google.maps.LatLng(36.1667, -86.7833),
+    zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
