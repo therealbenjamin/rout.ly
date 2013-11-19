@@ -11,6 +11,20 @@ function initialize(){
   // google.maps.event.addDomListener(window, 'load', initialize);
   $(function(){$('.date').datepicker();});
   $('#authentication-button').on('click', clickAuth);
+  $('form#authentication').on('submit', clickLogin);
+}
+
+
+function clickCreate(){
+
+}
+
+function clickLogin(e){
+  var url = '/login';
+  var data = $('form#authentication').serialize();
+  sendAjaxRequest(url, data, 'post', 'put', e, function(data){
+    htmlUpdateLoginStatus(data);
+  });
 }
 
 

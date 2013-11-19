@@ -38,3 +38,26 @@ exports.new = function(req, res){
     });
   });
 };
+
+exports.login = function(req, res){
+  User.findOne({email: req.body.email}, function(err, user){
+    if(user){
+      bcrypt.compare(req.body.password, user.password, function(err, result){
+        if(result){
+          req.session.regenerate(function(err){
+            req.session.userId = user.id;
+            req.session.save(function(err){
+              res.send({status: 'ok', email: user.email});
+            });
+          });
+        } else {
+          req.session.destroy(function(err){
+            res.send({status: 'error'});
+          })
+        }
+      });
+    } else {
+          res.send({status: 'error'});
+        }
+  });
+}

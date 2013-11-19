@@ -26,7 +26,7 @@ app.get('/overview', account.overview);
 app.post('/overview', account.new);
 app.post('/offerdetails', offer.details);
 app.get('/offerdetails', offer.show);
-
+app.put('/login', account.login);
 
 // start server & socket.io
 var common = require('./sockets/common');
