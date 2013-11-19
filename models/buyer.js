@@ -12,6 +12,7 @@ var Buyer = mongoose.Schema({
   phone         :     Number,
   email         :     String,
   venues        :     [{type: mongoose.Schema.Types.ObjectId, ref: 'Venue'}],
+  offers : [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
   createdAt     :     {type: Date, default: Date.now}
 });
 
