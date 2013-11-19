@@ -7,13 +7,15 @@ var socket;
 function initialize(){
   $(document).foundation();
   initializeSocketIO();
-  initializeMap();
-  google.maps.event.addDomListener(window, 'load', initialize);
+  // initializeMap();
+  // google.maps.event.addDomListener(window, 'load', initialize);
+  $(function(){$('.date').datepicker();});
   $('#authentication-button').on('click', clickAuth);
 }
 
 function clickAuth(){
-  alert('CLICKED!!');
+  $('#authentication').toggleClass('hidden');
+  e.preventDefault();
 }
 
 function initializeSocketIO(){
@@ -24,16 +26,16 @@ function initializeSocketIO(){
   socket.on('connected', socketConnected);
 }
 
-function initializeMap(){
-  var mapOptions = {
-    center: new google.maps.LatLng(36.1667, -86.7833),
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+// function initializeMap(){
+//   var mapOptions = {
+//     center: new google.maps.LatLng(36.1667, -86.7833),
+//     zoom: 12,
+//     mapTypeId: google.maps.MapTypeId.ROADMAP
+//   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  console.log(map);
-}
+//   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+//   console.log(map);
+// }
 
 function socketConnected(data){
   console.log(data);
@@ -43,9 +45,7 @@ function socketConnected(data){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-$(function() {
-    $('.date').datepicker();
-  });
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
