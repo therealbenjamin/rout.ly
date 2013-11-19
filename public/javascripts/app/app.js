@@ -7,6 +7,8 @@ var socket;
 function initialize(){
   $(document).foundation();
   initializeSocketIO();
+  initializeMap();
+  google.maps.event.addDomListener(window, 'load', initialize);
 }
 
 function initializeSocketIO(){
@@ -15,6 +17,17 @@ function initializeSocketIO(){
 
   socket = io.connect(url);
   socket.on('connected', socketConnected);
+}
+
+function initializeMap(){
+  var mapOptions = {
+    center: new google.maps.LatLng(-34.397, 150.644),
+    zoom: 4,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  console.log(map);
 }
 
 function socketConnected(data){

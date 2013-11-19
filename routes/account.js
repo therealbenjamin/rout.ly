@@ -6,8 +6,8 @@ exports.create = function(req, res){
 };
 
 exports.overview = function(req, res){
-Offer.find(function(err, offers){
-  res.render('account/overview', {title: 'Rout.ly', offers: offers});
+  Offer.find(function(err, offers){
+    res.render('account/overview', {title: 'Rout.ly', offers: offers});
   });
 };
 
