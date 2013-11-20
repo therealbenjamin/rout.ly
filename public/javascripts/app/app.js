@@ -41,7 +41,6 @@ function initializeSocketIO(){
 }
 
 function initializeMap(){
-  var $map = $('#map-canvas');
   if($('#map-canvas').length){
     var mapOptions = {
     center: new google.maps.LatLng(36.1667, -86.7833),
