@@ -40,14 +40,14 @@ exports.new = function(req, res){
 };
 
 exports.login = function(req, res){
-  User.findOne({email: req.body.email}, function(err, user){
-    if(user){
-      bcrypt.compare(req.body.password, user.password, function(err, result){
+  Buyer.findOne({email: req.body.email}, function(err, buyer){
+    if(buyer){
+      bcrypt.compare(req.body.password, buyer.password, function(err, result){
         if(result){
           req.session.regenerate(function(err){
-            req.session.userId = user.id;
+            req.session.userId = buyer.id;
             req.session.save(function(err){
-              res.send({status: 'ok', email: user.email});
+              res.send({status: 'ok', email: buyer.email});
             });
           });
         } else {
