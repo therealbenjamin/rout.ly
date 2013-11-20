@@ -11,10 +11,10 @@ var Buyer = mongoose.Schema({
   zip           :     Number,
   phone         :     Number,
   email         :     String,
-  password      :    {type: String, required: true},
-  isAdmin       :    {type: Boolean, default: false},
+  password      :     {type: String, required: true},
+  isAdmin       :     {type: Boolean, default: false},
   venues        :     [{type: mongoose.Schema.Types.ObjectId, ref: 'Venue'}],
-  offers : [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
+  offers        :     [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
   createdAt     :     {type: Date, default: Date.now}
 });
 
