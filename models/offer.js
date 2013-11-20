@@ -10,6 +10,7 @@ var Offer = mongoose.Schema({
   radius        : Number,
   daysPrior     : Number,
   daysAfter     : Number,
+  address: String,
   city          : String,
   state         : String,
   zip           : Number,

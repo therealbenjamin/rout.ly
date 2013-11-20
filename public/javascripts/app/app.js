@@ -8,7 +8,7 @@ function initialize(){
   $(document).foundation();
   initializeSocketIO();
   initializeMap();
-  // google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
   $(function(){$('.date').datepicker();});
   $('#authentication-button').on('click', clickAuth);
   $('form#authentication').on('submit', clickLogin);
