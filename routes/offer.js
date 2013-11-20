@@ -9,19 +9,18 @@ exports.index = function(req, res){
 
 exports.create = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
-    console.log(buyer);
     var offer = new Offer(req.body);
-    buyer.populate('offers').exec(function(err, offer){
-      buyer.offers.push(offer);
+    offer.save(function(err,data){
+      buyer.offers.push(data.id);
       buyer.save(function(err, buyer){
-        res.redirect('/offer/' + offer.id);
+        res.redirect('/offer/' + data.id);
       });
     });
   });
 };
 
 exports.show = function(req, res){
-  Buyer.findById(req.params.id, function(err, buyer){
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
     res.render('offer/details', {title: 'Rout.ly', buyer: buyer});
   });
 };

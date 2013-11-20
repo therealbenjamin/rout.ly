@@ -11,6 +11,7 @@ function initialize(){
   initializeSocketIO();
   google.maps.event.addDomListener(window, 'load', initializeMap);
   $(function(){$('.date').datepicker();});
+  $(function(){$('#accordion').accordion();});
   $('#authentication-button').on('click', clickAuth);
   $('form#authentication').on('submit', clickLogin);
 }
