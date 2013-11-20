@@ -28,6 +28,7 @@ app.post('/overview', account.new);
 app.get('/offer/:id', offer.show);
 app.post('/offer', offer.create);
 app.put('/login', account.login);
+app.get('/retrieveoffers/:id', offer.retrieve);
 
 
 // start server & socket.io

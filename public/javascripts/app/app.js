@@ -62,14 +62,23 @@ function initializeMap(){
 }
 
 function htmlDrawMapMarkers(){
-  var street = $('#street').text();
-  var city = $('#city').text();
-  var state = $('#state').text();
-  // var zip = $('#zip').text();
+  var offers = $('#offers').text();
+  offers = offers.split(',');
+  console.log(offers);
+  for (var i = 0; i < offers.length; i++) {
+    var data ={};
+    data.offer = offers[i];
+    sendAjaxRequest('/retrieveoffers/' + offers[i], {}, 'get', null, null, function(err, data){
+      console.log(data);
+      console.log(err);
+      debugger;
+    });
+  };
 
-  var address = street + ' ' + city + ' ' + state;
-  console.log(address);
-  codeAddress(address);
+
+
+
+  // codeAddress(address);
 }
 
 function codeAddress(address) {

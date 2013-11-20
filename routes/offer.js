@@ -28,3 +28,9 @@ exports.show = function(req, res){
     res.render('offer/details', {title: 'Rout.ly', buyer: buyer});
   });
 };
+
+exports.retrieve = function(req, res){
+  Offer.findById(req.params.id, function(err, offer){
+    res.send(offer);
+  })
+}
