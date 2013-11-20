@@ -53,11 +53,11 @@ exports.login = function(req, res){
         } else {
           req.session.destroy(function(err){
             res.send({status: 'error'});
-          })
+          });
         }
       });
     } else {
-          res.send({status: 'error'});
-        }
+      res.send({status: 'error'});
+    }
   });
-}
+};
