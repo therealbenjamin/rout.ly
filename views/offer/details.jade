@@ -8,12 +8,19 @@ block content
       each offer in buyer.offers
         if offer.isConfirmed
           p= offer.artist
+          p= offer.showDate
+          p= offer.address
+          p= offer.city + ', ' + offer.state + ' ' + offer.zip
   .row
     .small-12.columns
       h3 Pending
       each offer in buyer.offers
         if !offer.isConfirmed
           p= offer.artist
+          p= offer.showDate
+          p= offer.address
+          p= offer.city + ', ' + offer.state + ' ' + offer.zip
+
 
       //- p= offer.artist
       //- p= offer.showDate
