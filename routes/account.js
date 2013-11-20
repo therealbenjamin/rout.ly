@@ -9,8 +9,8 @@ exports.create = function(req, res){
 };
 
 exports.overview = function(req, res){
-  Offer.find(function(err, offers){
-    res.render('account/overview', {title: 'Rout.ly', offers: offers});
+  Buyer.findById(req.session.userId, function(err, buyer){
+    res.render('account/overview', {title: 'Rout.ly', offers: buyer.offers});
   });
 };
 
