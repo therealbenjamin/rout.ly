@@ -1,8 +1,9 @@
-@base: gray;
-
+@base: #3e606f;
+// dark blue 193441
 body{
-  background: @base url('../images/gray_bg.jpg');
-  background-size: cover;
+  background: @base;
+  // background: @base url('../images/gray_bg.jpg');
+  // background-size: cover;
   h1{
     color: white;
   }
@@ -20,7 +21,14 @@ form{
 }
 
 #performance-info, #buyer-details, #inquiry-form, #authentiction-form{
-  background: white url('../images/noise.png');
+  fieldset {
+    border-color: #193441;
+    border-width: 5px;
+  }
+  background: #d1dbbd;
+
+  // background: white url('../images/noise.png');
+
 }
 
 .button{

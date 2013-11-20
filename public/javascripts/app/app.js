@@ -9,8 +9,7 @@ var map;
 function initialize(){
   $(document).foundation();
   initializeSocketIO();
-  initializeMap();
-  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initializeMap);
   $(function(){$('.date').datepicker();});
   $('#authentication-button').on('click', clickAuth);
   $('form#authentication').on('submit', clickLogin);
@@ -27,7 +26,9 @@ function clickLogin(e){
 
 
 function clickAuth(){
+  console.log('---auth---');
   $('#authentication').toggleClass('hidden');
+  // e.preventDefault();
 }
 
 function initializeSocketIO(){
