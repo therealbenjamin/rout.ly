@@ -25,10 +25,14 @@ function clickLogin(e){
 }
 
 
-function clickAuth(){
-  console.log('---auth---');
+function clickAuth(e){
+
+  var isAnonymous = $('#authentication-button[data-email="anonymous"]').length === 1;
+
+
+
   $('#authentication').toggleClass('hidden');
-  // e.preventDefault();
+
 }
 
 function initializeSocketIO(){
