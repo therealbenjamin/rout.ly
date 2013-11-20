@@ -4,23 +4,27 @@ var Buyer = mongoose.model('Buyer');
 // var User = mongoose.model('User');
 
 exports.index = function(req, res){
-  res.render('offer/index', {title: 'Rout.ly'});
+  Buyer.findById(req.session.userId, function(err, buyer){
+    res.render('offer/index', {title: 'Rout.ly', user:buyer});
+  })
+
 };
 
 exports.create = function(req, res){
-  Buyer.findOne({id:req.session.userId}).populate('offers').exec(function(err, buyer){
-    console.log(buyer);
+
+  Buyer.findById(req.session.userId, function(err, buyer){
     var offer = new Offer(req.body);
-    console.log(offer);
-    buyer.offers.push(offer);
-    buyer.save(function(err, buyer){
-      res.redirect('/offer/' + offer.id);
+    offer.save(function(err,data){
+      buyer.offers.push(data.id);
+      buyer.save(function(err, buyer){
+        res.redirect('/offer/' + data.id);
+      });
     });
   });
 };
 
 exports.show = function(req, res){
-  Buyerr.findById(req.session.userId, function(err, buyer){
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
     res.render('offer/details', {title: 'Rout.ly', buyer: buyer});
   });
 };

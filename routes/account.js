@@ -5,7 +5,10 @@ var Buyer = mongoose.model('Buyer');
 var bcrypt = require('bcrypt');
 
 exports.create = function(req, res){
-  res.render('account/create', {title: 'Rout.ly'});
+  Buyer.findById(req.session.userId, function(err, buyer){
+    console.log(buyer);
+    res.render('account/create', {title: 'Rout.ly', user:buyer});
+  });
 };
 
 exports.overview = function(req, res){
