@@ -28,7 +28,7 @@ function clickLogin(e){
 function clickAuth(){
   console.log('---auth---');
   $('#authentication').toggleClass('hidden');
-  // e.preventDefault();
+
 }
 
 function initializeSocketIO(){
