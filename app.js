@@ -21,12 +21,14 @@ require('./config').initialize(app, RedisStore);
 app.get('/', home.index);
 app.get('/createaccount', account.create);
 app.get('/newoffer', offer.index);
+// app.post('/saveoffer', offer.create);
 app.get('/inquiry', inquiry.index);
 app.get('/overview', account.overview);
 app.post('/overview', account.new);
-app.post('/offerdetails', offer.details);
-app.get('/offerdetails', offer.show);
+app.get('/offer/:id', offer.show);
+app.post('/offer', offer.create);
 app.put('/login', account.login);
+
 
 // start server & socket.io
 var common = require('./sockets/common');

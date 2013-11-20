@@ -13,8 +13,8 @@ var Offer = mongoose.Schema({
   city          : String,
   state         : String,
   zip           : Number,
-  isConfirmed : {type: Boolean, default: false},
-  createdAt: {type: Date, default: Date.now}
+  isConfirmed   : {type: Boolean, default: false},
+  createdAt     : {type: Date, default: Date.now}
 });
 
 mongoose.model('Offer', Offer);

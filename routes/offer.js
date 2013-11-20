@@ -7,19 +7,18 @@ exports.index = function(req, res){
   res.render('offer/index', {title: 'Rout.ly'});
 };
 
-
-exports.show = function(req, res){
-  res.render('offer/update', {title: 'Rout.ly'});
-};
-
-exports.details = function(req, res){
+exports.create = function(req, res){
   var offer = new Offer(req.body);
   offer.save(function(err, offer){
-    User.find({id:req.body.userId}, function(err, user){
-      console.log(user);
-      debugger;
-      res.redirect('/offerdetails');
-      //NEXT OPERATION IS FINDING BUYER BY MATCHING USER EMAIL AND BUYER EMAIL
-    });
+    res.redirect('/offer/' + offer.id);
+  });
+};
+
+exports.show = function(req, res){
+  console.log(req.params.id);
+  Offer.findById(req.params.id, function(err, offer){
+    console.log(offer);
+    console.log(err);
+    res.render('offer/details', {title: 'Rout.ly', offer: offer});
   });
 };
