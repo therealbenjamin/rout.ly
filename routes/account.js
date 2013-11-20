@@ -15,27 +15,22 @@ exports.overview = function(req, res){
 };
 
 exports.new = function(req, res){
-  var user = new User();
-  user.email =req.body.email;
+  var buyer = new Buyer();
+  buyer.email = req.body.email;
   bcrypt.hash(req.body.password, 10, function(err, hash){
-    user.password = hash;
-    user.save(function(err, user){
+    buyer.password = hash;
+    buyer.save(function(err, user){
       if(err){
-        console.log(user);
+        console.log(buyer);
         res.send({status:'error'});
       } else {
-        console.log(user);
+        console.log(buyer);
         res.send({status:'ok'});
       }
     });
   });
-  user.save(function(err, user){
-    var buyer = new Buyer(req.body);
-    buyer.save(function(err, buyer){
-      console.log(buyer);
-      console.log(user);
-      res.redirect('/overview');
-    });
+  buyer.save(function(err, user){
+    res.redirect('/overview');
   });
 };
 
