@@ -8,20 +8,19 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-  Buyer.findById(req.session.userId, function(err, buyer){
+  Buyer.findOne({id:req.session.userId}).populate('offers').exec(function(err, buyer){
     console.log(buyer);
     var offer = new Offer(req.body);
-    buyer.populate('offers').exec(function(err, offer){
-      buyer.offers.push(offer);
-      buyer.save(function(err, buyer){
-        res.redirect('/offer/' + offer.id);
-      });
+    console.log(offer);
+    buyer.offers.push(offer);
+    buyer.save(function(err, buyer){
+      res.redirect('/offer/' + offer.id);
     });
   });
 };
 
 exports.show = function(req, res){
-  Buyer.findById(req.params.id, function(err, buyer){
+  Buyerr.findById(req.session.userId, function(err, buyer){
     res.render('offer/details', {title: 'Rout.ly', buyer: buyer});
   });
 };
