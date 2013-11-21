@@ -9,6 +9,7 @@ var home = require('./routes/home');
 var offer = require('./routes/offer');
 var account = require('./routes/account');
 var inquiry = require('./routes/inquiry');
+var venue = require('./routes/venue');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
@@ -31,6 +32,7 @@ app.put('/login', account.login);
 app.get('/retrieveoffers', offer.retrieve);
 app.get('/retrieveoffers/:id', offer.retrieveOne);
 app.delete('/logout', account.logout);
+app.get('/addvenue', venue.add);
 
 
 // start server & socket.io

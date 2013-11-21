@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Offer = mongoose.model('Offer');
-var User = mongoose.model('User');
 var Buyer = mongoose.model('Buyer');
 var bcrypt = require('bcrypt');
 

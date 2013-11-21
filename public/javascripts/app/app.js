@@ -33,7 +33,7 @@ function clickAuth(e){
   if (isAnonymous) {
     $('#authentication').toggleClass('hidden');
   } else{
-    var url = '/logout'
+    var url = '/logout';
     sendAjaxRequest(url, {}, 'post', 'delete', null, function(data){
       htmlLogout(data);
     });
@@ -81,7 +81,7 @@ function htmlDrawMapMarkers(){
       var address = street + ' ' + city + ' ' + state + ', ' + zip;
       codeAddress(address);
 
-    };
+    }
   });
 
   // sendAjaxRequest('/retrieveoffers/' + offers[i], {}, 'get', null, null, function(data, status){
@@ -97,7 +97,7 @@ function htmlDrawMapMarkers(){
 
 function codeAddress(address) {
   geocoder.geocode( { 'address': address}, function(results, status) {
-      console.log(results[0].geometry.location)
+      console.log(results[0].geometry.location);
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: map,
@@ -128,7 +128,7 @@ function clickLogin(e){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 function htmlUpdateLoginStatus(data){
-window.location.href = '/';
+  window.location.href = '/';
 }
 
 function htmlLogout(data){
