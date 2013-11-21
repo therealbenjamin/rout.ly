@@ -30,6 +30,7 @@ app.post('/offer', offer.create);
 app.put('/login', account.login);
 app.get('/retrieveoffers', offer.retrieve);
 app.get('/retrieveoffers/:id', offer.retrieveOne);
+app.delete('/logout', account.logout);
 
 
 // start server & socket.io

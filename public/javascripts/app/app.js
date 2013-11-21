@@ -128,5 +128,12 @@ function clickLogin(e){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 function htmlUpdateLoginStatus(data){
-  console.log(data);
+
+}
+
+function htmlLogout(data){
+  $('#authentication-button').attr('data-email', 'anonymous');
+  $('#authentication-button').text('Login');
+  $('#authentication-button').removeClass('alert');
+  window.location.href = '/';
 }
