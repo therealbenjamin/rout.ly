@@ -22,7 +22,6 @@ require('./config').initialize(app, RedisStore);
 app.get('/', home.index);
 app.get('/createaccount', account.create);
 app.get('/newoffer', offer.index);
-// app.post('/saveoffer', offer.create);
 app.get('/inquiry', inquiry.index);
 app.get('/overview', account.overview);
 app.post('/overview', account.new);
