@@ -128,7 +128,7 @@ function clickLogin(e){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 function htmlUpdateLoginStatus(data){
-
+window.location.href = '/';
 }
 
 function htmlLogout(data){
