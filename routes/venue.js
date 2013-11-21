@@ -4,6 +4,6 @@ var Venue = mongoose.model('Venue');
 
 exports.add = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
-    res.render('venue/create', {title: 'Rout.ly', user:buyer});
+    res.render('venues/create', {title: 'Rout.ly', user:buyer});
   });
 };
