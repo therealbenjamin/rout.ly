@@ -30,11 +30,19 @@ function clickAuth(e){
 
   var isAnonymous = $('#authentication-button[data-email="anonymous"]').length === 1;
 
-
-
-  $('#authentication').toggleClass('hidden');
-
+  if (isAnonymous) {
+    $('#authentication').toggleClass('hidden');
+  } else{
+    var url = '/logout'
+    sendAjaxRequest(url, {}, 'post', 'delete', null, function(data){
+      htmlLogout(data);
+    });
+  }
+  e.preventDefault();
 }
+
+
+
 
 function initializeSocketIO(){
   var port = window.location.port ? window.location.port : '80';
