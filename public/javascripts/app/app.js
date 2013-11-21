@@ -97,12 +97,19 @@ function htmlDrawMapMarkers(){
 
 function codeAddress(address) {
   geocoder.geocode( { 'address': address}, function(results, status) {
+
       console.log(results[0].geometry.location);
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
+      var circleOptions ={
+        strokeColor: '#FF000',
+        strokeOpacity: 1,
+        strokeWeight: 3,
+        fillColor: 'red',
+        fillOpacity: .65,
+        map: map,
+        center: results[0].geometry.location,
+        radius: 100
+      }
+      var circle = new google.maps.Circle(circleOptions);
     });
 }
 
