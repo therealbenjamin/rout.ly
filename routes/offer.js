@@ -30,7 +30,14 @@ exports.show = function(req, res){
 };
 
 exports.retrieve = function(req, res){
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyers){
+    res.send(buyers);
+  });
+}
+
+exports.retrieveOne = function(req, res){
   Offer.findById(req.params.id, function(err, offer){
+    console.log(offer);
     res.send(offer);
   })
 }

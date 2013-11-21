@@ -13,7 +13,11 @@ exports.create = function(req, res){
 
 exports.overview = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
-    res.render('account/overview', {title: 'Rout.ly', offers: buyer.offers});
+    if (buyer) {
+      res.render('account/overview', {title: 'Rout.ly', offers: buyer.offers, user: buyer});
+    } else {
+      res.render('account/overview', {title: 'Rout.ly'});
+    }
   });
 };
 
