@@ -33,6 +33,7 @@ app.get('/retrieveoffers', offer.retrieve);
 app.get('/retrieveoffers/:id', offer.retrieveOne);
 app.delete('/logout', account.logout);
 app.get('/addvenue', venue.add);
+app.post('/savevenue', venue.save);
 
 
 // start server & socket.io

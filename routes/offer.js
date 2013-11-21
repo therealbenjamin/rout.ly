@@ -23,7 +23,7 @@ exports.create = function(req, res){
 };
 
 exports.show = function(req, res){
-  Buyer.findById(req.session.userId). populate('offers').exec(function(err, buyer){
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
     res.render('offer/details', {title: 'Rout.ly', buyer: buyer});
   });
 };
