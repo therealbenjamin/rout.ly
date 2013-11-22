@@ -41,9 +41,6 @@ function clickAuth(e){
   e.preventDefault();
 }
 
-
-
-
 function initializeSocketIO(){
   var port = window.location.port ? window.location.port : '80';
   var url = window.location.protocol + '//' + window.location.hostname + ':' + port + '/app';
