@@ -87,8 +87,6 @@ function htmlDrawMapMarkers(){
 function codeAddress(address, offer) {
 
   geocoder.geocode( { 'address': address}, function(results, status) {
-
-      console.log(results[0].geometry.location);
       var circleOptions ={
         strokeColor: '#FF000',
         strokeOpacity: 0.8,
