@@ -15,13 +15,15 @@ exports.overview = function(req, res){
     if (buyer) {
       res.render('account/overview', {title:'Rout.ly', user:buyer, offers: buyer.offers, venues:buyer.venues});
     } else{
-      res.render('account/overview', {title: 'Rout.ly'});
-    };
+      res.redirect('/signup');
+    }
   });
 };
 
 exports.new = function(req, res){
-  var buyer = new Buyer();
+  var buyerinfo = {};
+  buyerinfo.name = 'matthew';
+  var buyer = new Buyer(buyerinfo);
   buyer.email = req.body.email;
   bcrypt.hash(req.body.password, 10, function(err, hash){
     buyer.password = hash;
@@ -67,4 +69,8 @@ exports.logout = function(req, res){
   req.session.destroy(function(err){
     res.send({status: 'ok'});
   });
+};
+
+exports.redirect = function(req, res){
+  res.render('account/not-a-member');
 };

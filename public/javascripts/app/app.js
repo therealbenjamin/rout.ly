@@ -79,24 +79,25 @@ function htmlDrawMapMarkers(){
       var zip = data.offers[i].zip;
 
       var address = street + ' ' + city + ' ' + state + ', ' + zip;
-      codeAddress(address);
+      codeAddress(address, data.offers[i]);
     }
   });
 }
 
-function codeAddress(address) {
+function codeAddress(address, offer) {
+
   geocoder.geocode( { 'address': address}, function(results, status) {
 
       console.log(results[0].geometry.location);
       var circleOptions ={
         strokeColor: '#FF000',
-        strokeOpacity: .8,
+        strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: 'red',
-        fillOpacity: .65,
+        fillOpacity: 0.65,
         map: map,
         center: results[0].geometry.location,
-        radius: (90 * 1609.34)
+        radius: (offer.radius * 1609.34)
       };
       var circle = new google.maps.Circle(circleOptions);
       console.log(circle);
