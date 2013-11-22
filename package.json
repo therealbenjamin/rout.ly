@@ -18,8 +18,7 @@
     "socket.io": "*",
     "connect-redis": "*",
     "require-dir": "*",
-    "bcrypt": "*",
-    "browser-logger": "*"
+    "bcrypt": "*"
   },
   "devDependencies": {
     "grunt": "*",
