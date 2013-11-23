@@ -19,15 +19,16 @@ exports.save = function(req, res){
     var address = street + ' ' + city + ' ' + state + ', ' + zip;
 
     gm.geocode(address, function(err, data){
+     console.log(data.results[0].geometry.location.lat);
+     console.log(data.results[0].geometry.location.lng);
       venue.lat = data.results[0].geometry.location.lat;
       venue.lng = data.results[0].geometry.location.lng;
 
-    });
-
-    venue.save(function(err, data){
-      buyer.venues.push(data.id);
-      buyer.save(function(err, buyer){
-        res.redirect('/overview');
+      venue.save(function(err, venue){
+        buyer.venues.push(venue.id);
+        buyer.save(function(err, buyer){
+          res.redirect('/overview');
+        })
       });
     });
   });

@@ -13,11 +13,11 @@ exports.create = function(req, res){
 
   Buyer.findById(req.session.userId, function(err, buyer){
     var offer1 = new Offer(req.body);
-    // Offer.find(function(err, offers){
-    //   for (var i = 0; i < offers.length; i++) {
-
-    //   };
-    // });
+    Offer.find(function(err, offers){
+      for (var i = 0; i < offers.length; i++) {
+        m.compareOfferAddresses(offer1, offers[i]);
+      };
+    });
     offer1.save(function(err, offer1){
       res.redirect('/offer/' + offer1.id);
     });
