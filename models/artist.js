@@ -10,6 +10,8 @@ var Artist = mongoose.Schema({
   phone         :     Number,
   email         :     String,
   minOffer      :     Number,
+  startDate     :     Date,
+  endDate       :     Date,
   offers        :     [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
   createdAt     :     {type: Date, default: Date.now}
 });
