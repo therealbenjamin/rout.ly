@@ -15,6 +15,7 @@ var Offer = mongoose.Schema({
   state         : String,
   zip           : Number,
   isConfirmed   : {type: Boolean, default: false},
+  conflicts     : [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
   createdAt     : {type: Date, default: Date.now}
 });
 

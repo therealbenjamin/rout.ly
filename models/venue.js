@@ -10,7 +10,7 @@ var Venue = mongoose.Schema({
   cellPhone       :   Number,
   email           :   String,
   capacity        :   Number,
-  createdAt: {type: Date, default: Date.now}
+  createdAt       :   {type: Date, default: Date.now}
 });
 
 mongoose.model('Venue', Venue);
