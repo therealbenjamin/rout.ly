@@ -10,11 +10,12 @@ var Offer = mongoose.Schema({
   radius        : Number,
   daysPrior     : Number,
   daysAfter     : Number,
-  address: String,
+  address       : String,
   city          : String,
   state         : String,
   zip           : Number,
   isConfirmed   : {type: Boolean, default: false},
+  conflicts     : [{type: mongoose.Schema.Types.ObjectId, ref: 'Offer'}],
   createdAt     : {type: Date, default: Date.now}
 });
 
