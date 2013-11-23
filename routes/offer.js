@@ -4,8 +4,8 @@ var Buyer = mongoose.model('Buyer');
 var m = require('../lib/mechanics');
 
 exports.index = function(req, res){
-  Buyer.findById(req.session.userId, function(err, buyer){
-    res.render('offer/index', {title: 'Rout.ly', user:buyer});
+  Buyer.findById(req.session.userId).populate('venues').exec(function(err, buyer){
+    res.render('offer/index', {title: 'Rout.ly', user:buyer, venues: buyer.venues});
   });
 };
 
@@ -13,13 +13,14 @@ exports.create = function(req, res){
 
   Buyer.findById(req.session.userId, function(err, buyer){
     var offer1 = new Offer(req.body);
-    Offer.find(function(err, offers){
-      for (var i = 0; i < offers.length; i++) {
-        console.log(m);
-        m.compareOfferAddresses(offer1, offers[i]);
-      };
+    // Offer.find(function(err, offers){
+    //   for (var i = 0; i < offers.length; i++) {
+
+    //   };
+    // });
+    offer1.save(function(err, offer1){
+      res.redirect('/offer/' + offer1.id);
     });
-    res.redirect('/offer/' + offer1.id);
   });
 };
 

@@ -10,6 +10,8 @@ var Venue = mongoose.Schema({
   cellPhone       :   Number,
   email           :   String,
   capacity        :   Number,
+  lat             :   Number,
+  lng             :   Number,
   createdAt       :   {type: Date, default: Date.now}
 });
 
