@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Offer = mongoose.model('Offer');
 var Buyer = mongoose.model('Buyer');
-// var User = mongoose.model('User');
+var m = require('../lib/mechanics');
 
 exports.index = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
@@ -12,13 +12,13 @@ exports.index = function(req, res){
 exports.create = function(req, res){
 
   Buyer.findById(req.session.userId, function(err, buyer){
-    var offer = new Offer(req.body);
-    offer.save(function(err,data){
-      buyer.offers.push(data.id);
-      buyer.save(function(err, buyer){
-        res.redirect('/offer/' + data.id);
-      });
+    var offer1 = new Offer(req.body);
+    Offer.find(function(err, offers){
+      for (var i = 0; i < offers.length; i++) {
+
+      };
     });
+    res.redirect('/offer/' + offer.id);
   });
 };
 

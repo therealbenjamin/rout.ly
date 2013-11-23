@@ -3,6 +3,7 @@ var Offer = mongoose.model('Offer');
 var Buyer = mongoose.model('Buyer');
 var bcrypt = require('bcrypt');
 
+
 exports.create = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
     console.log(buyer);

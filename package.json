@@ -19,7 +19,8 @@
     "connect-redis": "*",
     "require-dir": "*",
     "bcrypt": "*",
-    "browser-logger": "*"
+    "browser-logger": "*",
+    "googlemaps": "*"
   },
   "devDependencies": {
     "grunt": "*",
