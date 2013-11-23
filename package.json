@@ -20,7 +20,8 @@
     "require-dir": "*",
     "bcrypt": "*",
     "browser-logger": "*",
-    "googlemaps": "*"
+    "googlemaps": "*",
+    "geodist":"*"
   },
   "devDependencies": {
     "grunt": "*",

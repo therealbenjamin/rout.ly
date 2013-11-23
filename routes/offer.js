@@ -15,10 +15,11 @@ exports.create = function(req, res){
     var offer1 = new Offer(req.body);
     Offer.find(function(err, offers){
       for (var i = 0; i < offers.length; i++) {
-
+        console.log(m);
+        m.compareOfferAddresses(offer1, offers[i]);
       };
     });
-    res.redirect('/offer/' + offer.id);
+    res.redirect('/offer/' + offer1.id);
   });
 };
 
