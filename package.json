@@ -22,7 +22,8 @@
     "browser-logger": "*",
     "googlemaps": "*",
     "geodist":"*",
-    "moment-range":"*"
+    "moment-range":"*",
+    "twix":"*"
   },
   "devDependencies": {
     "grunt": "*",
