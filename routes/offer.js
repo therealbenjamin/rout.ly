@@ -15,7 +15,7 @@ exports.create = function(req, res){
     var offer1 = new Offer(req.body);
     Offer.find(function(err, offers){
       for (var i = 0; i < offers.length; i++) {
-        m.compareOfferAddresses(offer1, offers[i]);
+        m.compareOffers(offer1, offers[i]);
       };
     });
     offer1.save(function(err, offer1){
