@@ -18,9 +18,7 @@ exports.create = function(req, res){
         m.compareOffers(offer1, offers[i]);
       };
     });
-    offer1.save(function(err, offer1){
       res.redirect('/offer/' + offer1.id);
-    });
   });
 };
 
