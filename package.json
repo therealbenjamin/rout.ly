@@ -21,11 +21,8 @@
     "bcrypt": "*",
     "browser-logger": "*",
     "googlemaps": "*",
-<<<<<<< HEAD
-    "geodist":"*"
-=======
-    "geodist": "*"
->>>>>>> baf6aaae80737d6777e4f0d6b21beefb7e4e60da
+    "geodist":"*",
+    "moment-range":"*"
   },
   "devDependencies": {
     "grunt": "*",
