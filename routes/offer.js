@@ -12,13 +12,18 @@ exports.index = function(req, res){
 exports.create = function(req, res){
 
   Buyer.findById(req.session.userId, function(err, buyer){
+    console.log(buyer);
     var offer1 = new Offer(req.body);
+    console.log(offer1);
     Offer.find(function(err, offers){
+      console.log(offers);
       for (var i = 0; i < offers.length; i++) {
-        m.compareOffers(offer1, offers[i]);
+        m.compareOffers(offer1, offers[i], buyer);
       };
     });
-      res.redirect('/offer/' + offer1.id);
+      // offer1.save(function(err, offer){
+      res.redirect('/overview');
+      // });
   });
 };
 
