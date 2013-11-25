@@ -24,7 +24,7 @@ exports.overview = function(req, res){
 exports.new = function(req, res){
 
   var buyer = new Buyer(req.body);
-  console.log(buyer);
+
   bcrypt.hash(req.body.password, 10, function(err, hash){
     buyer.password = hash;
     buyer.save(function(err, user){
