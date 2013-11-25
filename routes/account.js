@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 
 exports.create = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
-    console.log(buyer);
+    // console.log(buyer);
     res.render('account/create', {title: 'Rout.ly', user:buyer});
   });
 };
@@ -22,24 +22,23 @@ exports.overview = function(req, res){
 };
 
 exports.new = function(req, res){
-  var buyerinfo = {};
-  buyerinfo.name = 'matthew';
-  var buyer = new Buyer(buyerinfo);
-  buyer.email = req.body.email;
+
+  var buyer = new Buyer(req.body);
+  console.log(buyer);
   bcrypt.hash(req.body.password, 10, function(err, hash){
     buyer.password = hash;
     buyer.save(function(err, user){
       if(err){
-        console.log(buyer);
+        // console.log(buyer);
         res.send({status:'error'});
       } else {
-        console.log(buyer);
+        // console.log(buyer);
         res.send({status:'ok'});
       }
     });
   });
   buyer.save(function(err, user){
-    res.redirect('/overview');
+    res.redirect('/');
   });
 };
 
