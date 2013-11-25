@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Offer = mongoose.model('Offer');
 var Buyer = mongoose.model('Buyer');
+var Venue = mongoose.model('Venue');
 var m = require('../lib/mechanics');
 
 exports.index = function(req, res){
@@ -29,9 +30,15 @@ exports.show = function(req, res){
 };
 
 exports.retrieve = function(req, res){
-  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyers){
-    res.send(buyers);
-  });
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
+     venues = [];
+    for (var i = 0; i < buyer.venues.length; i++) {
+      Venue.findById(buyer.venues[i], function(err, venue){
+        // console.log(venue);
+        venues.push(venue);
+      }); console.log(venues);
+    };
+});
 };
 
 exports.retrieveOne = function(req, res){
