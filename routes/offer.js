@@ -12,18 +12,25 @@ exports.index = function(req, res){
 exports.create = function(req, res){
 
   Buyer.findById(req.session.userId, function(err, buyer){
-    console.log(buyer);
+
     var offer1 = new Offer(req.body);
-    console.log(offer1);
+    // console.log(offer1);
     Offer.find(function(err, offers){
-      console.log(offers);
+      if (offers.length) {
       for (var i = 0; i < offers.length; i++) {
         m.compareOffers(offer1, offers[i], buyer);
-      };
+      }
+      } else {
+        offer1.save(function(err, offer){
+          // console.log(offer);
+        });
+        buyer.offers.push(offer1);
+        buyer.save(function(err, buyer){
+
+        });
+      }
     });
-      // offer1.save(function(err, offer){
       res.redirect('/overview');
-      // });
   });
 };
 
@@ -34,8 +41,8 @@ exports.show = function(req, res){
 };
 
 exports.retrieve = function(req, res){
-  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyers){
-    res.send(buyers);
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
+    res.send(buyer);
   });
 };
 

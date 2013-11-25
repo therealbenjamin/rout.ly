@@ -68,16 +68,16 @@ function initializeMap(){
 function htmlDrawMapMarkers(){
 
   sendAjaxRequest('/retrieveoffers', {}, 'get', null, null, function(data, status){
+    console.log(data);
+  //   for (var i = 0; i < data.offers.length; i++) {
+  //     var street = data.offers[i].address;
+  //     var city = data.offers[i].city;
+  //     var state = data.offers[i].state;
+  //     var zip = data.offers[i].zip;
 
-    for (var i = 0; i < data.offers.length; i++) {
-      var street = data.offers[i].address;
-      var city = data.offers[i].city;
-      var state = data.offers[i].state;
-      var zip = data.offers[i].zip;
-
-      var address = street + ' ' + city + ' ' + state + ', ' + zip;
-      codeAddress(address, data.offers[i]);
-    }
+  //     var address = street + ' ' + city + ' ' + state + ', ' + zip;
+  //     codeAddress(address, data.offers[i]);
+  //   }
   });
 }
 
