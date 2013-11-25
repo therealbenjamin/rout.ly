@@ -22,9 +22,7 @@ exports.overview = function(req, res){
 };
 
 exports.new = function(req, res){
-  var buyerinfo = {};
-  buyerinfo.name = 'matthew';
-  var buyer = new Buyer(buyerinfo);
+  var buyer = new Buyer(req.body);
   buyer.email = req.body.email;
   bcrypt.hash(req.body.password, 10, function(err, hash){
     buyer.password = hash;
