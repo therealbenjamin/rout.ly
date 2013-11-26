@@ -21,14 +21,13 @@ exports.create = function(req, res){
         forEach(offers, function(offer, index){
           var done = this.async();
           async.waterfall([
-
+            function(fn){m.compareOffers(offer1, offer, fn);},
+            function(){}
           ], function(err, result){
 
           });
         });
-        // for (var i = 0; i < offers.length; i++) {
-        //   m.compareOffers(offer1, offers[i], buyer);
-        // }
+
       } else {
         offer1.save(function(err, offer){
           console.log('----------------this is save 3--------------');
