@@ -4,6 +4,7 @@ var Buyer = mongoose.model('Buyer');
 var m = require('../lib/mechanics');
 var async = require('async');
 var forEach = require('async-foreach').forEach;
+var datacount = {count: 0};
 
 exports.index = function(req, res){
   Buyer.findById(req.session.userId).populate('venues').exec(function(err, buyer){
@@ -19,16 +20,20 @@ exports.create = function(req, res){
 
     Offer.find(function(err, offers){
       if (offers.length) {
+
         forEach(offers, function(offer, index){
+
           var done = this.async();
           async.waterfall([
-            function(fn){m.compareOfferDistance(offer1, offer, buyer, fn);},
+            function(fn){m.compareOfferDistance(offer1, offer, buyer, offers, datacount, fn);},
             function(data, fn){m.compareOfferTime(data, fn);},
             function(data, fn){m.assessConflicts(data, fn);},
-            function(){}
+            function(data, fn){m.assessSave(data, fn);}
           ], function(err, result){
-            console.log(result);
-            console.log(err);
+            // console.log(result);
+            // console.log(err);
+            // console.log('-------trying the done fn--------');
+            done();
           });
         });
 
