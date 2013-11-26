@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Offer = mongoose.model('Offer');
 var Buyer = mongoose.model('Buyer');
 var m = require('../lib/mechanics');
+var async = require('async');
 var forEach = require('async-foreach').forEach;
 
 exports.index = function(req, res){
@@ -21,11 +22,13 @@ exports.create = function(req, res){
         forEach(offers, function(offer, index){
           var done = this.async();
           async.waterfall([
-            function(fn){m.compareOfferDistance(offer1, offer, fn);},
-            function(fn, data){m.compareOfferTime(data, fn);},
+            function(fn){m.compareOfferDistance(offer1, offer, buyer, fn);},
+            function(data, fn){m.compareOfferTime(data, fn);},
+            function(data, fn){m.assessConflicts(data, fn);},
             function(){}
           ], function(err, result){
-
+            console.log(result);
+            console.log(err);
           });
         });
 
