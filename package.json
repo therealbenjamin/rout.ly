@@ -23,7 +23,8 @@
     "googlemaps": "*",
     "geodist":"*",
     "moment-range":"*",
-    "twix":"*"
+    "twix":"*",
+    "async-foreach": "*"
   },
   "devDependencies": {
     "grunt": "*",

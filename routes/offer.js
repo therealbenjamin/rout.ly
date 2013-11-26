@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Offer = mongoose.model('Offer');
 var Buyer = mongoose.model('Buyer');
 var m = require('../lib/mechanics');
+var forEach = require('async-foreach').forEach;
 
 exports.index = function(req, res){
   Buyer.findById(req.session.userId).populate('venues').exec(function(err, buyer){
@@ -14,23 +15,30 @@ exports.create = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
 
     var offer1 = new Offer(req.body);
-    // console.log(offer1);
+
     Offer.find(function(err, offers){
       if (offers.length) {
-      for (var i = 0; i < offers.length; i++) {
-        m.compareOffers(offer1, offers[i], buyer);
-      }
+        forEach(offers, function(offer, index){
+          var done = this.async();
+          async.waterfall([
+
+          ], function(err, result){
+
+          });
+        });
+        // for (var i = 0; i < offers.length; i++) {
+        //   m.compareOffers(offer1, offers[i], buyer);
+        // }
       } else {
         offer1.save(function(err, offer){
-          // console.log(offer);
+          console.log('----------------this is save 3--------------');
         });
         buyer.offers.push(offer1);
         buyer.save(function(err, buyer){
-
         });
       }
     });
-      res.redirect('/overview');
+    res.redirect('/overview');
   });
 };
 
