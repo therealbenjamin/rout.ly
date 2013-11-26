@@ -21,7 +21,8 @@ exports.create = function(req, res){
         forEach(offers, function(offer, index){
           var done = this.async();
           async.waterfall([
-            function(fn){m.compareOffers(offer1, offer, fn);},
+            function(fn){m.compareOfferDistance(offer1, offer, fn);},
+            function(fn, data){m.compareOfferTime(data, fn);},
             function(){}
           ], function(err, result){
 
