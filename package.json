@@ -24,7 +24,8 @@
     "geodist":"*",
     "moment-range":"*",
     "twix":"*",
-    "async-foreach": "*"
+    "async-foreach": "*",
+    "node-inspector":"*"
   },
   "devDependencies": {
     "grunt": "*",
