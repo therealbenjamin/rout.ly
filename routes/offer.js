@@ -22,7 +22,6 @@ exports.create = function(req, res){
       if (offers.length) {
 
         forEach(offers, function(offer, index){
-
           var done = this.async();
           async.waterfall([
             function(fn){m.compareOfferDistance(offer1, offer, buyer, offers, datacount, fn);},
