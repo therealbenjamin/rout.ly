@@ -14,7 +14,7 @@ exports.accept = function(req, res){
     if (inquiry) {
     res.redirect('/')
     } else{
-        res.redirect('/');
+      res.redirect('/');
       };
   });
 }

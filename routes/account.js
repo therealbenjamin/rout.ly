@@ -74,3 +74,13 @@ exports.logout = function(req, res){
 exports.redirect = function(req, res){
   res.render('account/not-a-member');
 };
+
+exports.admin = function(req, res){
+  Buyer.findById(req.session.userId, function(err, buyer){
+      if (buyer.isAdmin) {
+        res.render('account/admin', {user:buyer});
+      } else{
+        res.render('account/not-a-member');
+      };
+  });
+}
