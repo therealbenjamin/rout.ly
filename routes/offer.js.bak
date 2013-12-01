@@ -1,0 +1,74 @@
+var mongoose = require('mongoose');
+var Offer = mongoose.model('Offer');
+var Buyer = mongoose.model('Buyer');
+var m = require('../lib/mechanics');
+var async = require('async');
+var forEach = require('async-foreach').forEach;
+var datacount = {count: 0};
+
+exports.index = function(req, res){
+  Buyer.findById(req.session.userId).populate('venues').exec(function(err, buyer){
+    res.render('offer/index', {title: 'Rout.ly', user:buyer, venues: buyer.venues});
+  });
+};
+
+exports.create = function(req, res){
+
+  Buyer.findById(req.session.userId, function(err, buyer){
+
+    var offer1 = new Offer(req.body);
+
+    Offer.find(function(err, offers){
+      var numOffers = offers.length;
+      if (numOffers) {
+
+        forEach(offers,
+          function(offer, index){
+            var done = this.async();
+            async.waterfall([
+              // function(fn){console.log('FIRST STEP OF WATERFALL->'+offer.venue);fn();},
+              // function(fn){console.log('SECOND STEP OF WATERFALL->'+offer.isConfirmed);fn();},
+              function(fn){m.compareOfferDistance(offer1, offer, buyer, numOffers, datacount, fn);},
+              function(data, fn){m.compareOfferTime(data, fn);},
+              function(data, fn){m.assessConflicts(data, fn);},
+              function(data, fn){m.assessSave(data, fn);},
+              function(results,fn){console.log('RESULTS->'+results.status);done();}
+            ]);
+          },
+
+          function(){
+            console.log('The FOREACH is ALL DONE');
+          });
+
+
+      } else {
+        offer1.save(function(err, offer){
+          console.log('----------------this is save 3--------------');
+        });
+        buyer.offers.push(offer1);
+        buyer.save(function(err, buyer){
+        });
+      }
+    });
+    res.redirect('/overview');
+  });
+};
+
+exports.show = function(req, res){
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
+    res.render('offer/details', {title: 'Rout.ly', buyer: buyer});
+  });
+};
+
+exports.retrieve = function(req, res){
+  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
+    res.send(buyer);
+  });
+};
+
+exports.retrieveOne = function(req, res){
+  Offer.findById(req.params.id, function(err, offer){
+    console.log(offer);
+    res.send(offer);
+  });
+};
