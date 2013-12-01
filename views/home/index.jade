@@ -10,10 +10,22 @@ block content
       h3 Welcome to the Future of Music Booking.
   .row
     .small-12.columns
-      p <strong>Rout.ly</strong> is a web application that creates an efficient interface between booking agents and talent buyers in order to automate repetitive tasks inherent to the booking process and pass savings on to artists and promoters.
-      p New to <strong>Rout.ly</strong>? Sumbit an inquiry if you have questions, or create and account to get started.
+      p.homepage <strong>Rout.ly</strong> is a web application that creates an efficient interface between booking agents and talent buyers in order to automate repetitive tasks inherent to the booking process and pass savings on to artists and promoters.
+      p.homepage New to <strong>Rout.ly</strong>? Sumbit an inquiry if you have questions, or create and account to get started.
+  .row
+    .small-12.columns
+      ul(data-orbit)
+        li
+          img(src='./images/prince.jpg')
+          .orbit-caption Prince and the Revolution
+        li
+          img(src='./images/rick.jpg')
+          .orbit-caption I'm Rick James!
+        li
+          img(src='./images/bowie.jpg')
+          .orbit-caption David Bowie
   .row
     .small-6.columns
-      a.button.expand(href='/inquiry') Submit Inquiry
+      a.button.expand.home_button(href='/inquiry') Submit Inquiry
     .small-6.columns
-      a.button.expand(href='/createaccount') Create Account
+      a.button.expand.home_button(href='/createaccount') Create Account
