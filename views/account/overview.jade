@@ -2,37 +2,72 @@ extends ../template/layout
 include ../mixins/form-helper
 
 block content
-  .row
-    .small-12.columns
-      h1.subheader rout.ly
-  .row
-    .small-2.columns
-      a.button.tiny.expand(href="/") Home
-    .small-2.columns
-      a.button.tiny.expand(href="/newoffer") New Offer
-    .small-10.columns
+  //- .row
+  //-   .small-6.columns
+  //-     #confirmedOffers
+  //-       h3 Confirmed Offers
+  //-       if offers
+  //-         each offer in offers
+  //-           if(offer.isConfirmed === true)
+  //-             p= offer.artist
+  //-             p= offer.showDate
+  //-   .small-6.columns
+  //- .row
+  //-   .small-12.columns
+  //-     #pendingOffers
+  //-       h3 Pending Offers
+  //-       if offers
+  //-         each offer in offers
+  //-           if(offer.isConfirmed === false)
+  //-             p= offer.artist
+  //-             p= offer.showDate
   .row
     .small-6.columns
-      #confirmedOffers
-        h3 Confirmed Offers
-        if offers
-          each offer in offers
-            if(offer.isConfirmed === true)
-              p= offer.artist
-              p= offer.showDate
+      if venues
+        h3 Your Venues
+        table#venues
+          thead
+            tr
+              th Name
+              th Address
+              th City
+              th State
+              th Office Phone
+              th Email
+          tbody
+            each venue in venues
+              tr
+                td= venue.name
+                td= venue.address
+                td= venue.city
+                td= venue.state
+                td= venue.officePhone
+                td= venue.email
     .small-6.columns
   .row
-    .small-12.columns
-      #pendingOffers
-        h3 Pending Offers
-        if offers
-          each offer in offers
-            if(offer.isConfirmed === false)
-              p= offer.artist
-              p= offer.showDate
-      #venues
-        if venues
-          h3 Your Venues
-          each venue in venues
-            p= venue.name
+    .small-6.columns
+      if offers
+        h3 Your Offers
+        table#offers
+          thead
+            tr
+              th Artist
+              th Date
+              th After
+              th Before
+              th Price
+              th Venue
+              th Confirmed
+          tbody
+            each offer in offers
+              tr
+                td= offer.artist
+                td= offer.showDate
+                td= offer.daysPrior
+                td= offer.daysAfter
+                td= offer.guarantee
+                td= offer.venue
+                td= offer.isConfirmed
+  .row
+    .small-6.small-offset-6.columns
       #map-canvas

@@ -1,6 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
 @base: #3e606f;
 // dark blue 193441
+html, body{
+  width: 100%;
+}
+
 body{
   background: @base;
   font-family: 'Roboto Slab', serif;
@@ -67,7 +71,39 @@ p#terms{
 }
 
 #map-canvas{
-  height: 260px;
-  width: 550px;
-  border: 10px solid gray;
+  height: 450px;
+  width: 80%;
+  margin-left: 100px;
+  // border: 10px solid gray;
+  margin-top: -450px;
+}
+
+
+table#venues{
+display: table;
+table-layout: fixed;
+width: 580px;
+  tr {
+    th{
+      width: 11%;
+    }
+    td{
+      width: 11%;
+    }
+  }
+}
+
+table#offers{
+display: table;
+table-layout: fixed;
+width: 580px;
+  tr {
+    th{
+      width: 9%;
+    }
+    td{
+      width: 9%;
+      overflow-x: scroll;
+    }
+  }
 }
