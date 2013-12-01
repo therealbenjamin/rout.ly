@@ -26,7 +26,7 @@ exports.save = function(req, res){
 
       venue.save(function(err, venue){
         buyer.venues.push(venue.id);
-        buyer.save(function(err, buyer){
+        buyer.save(function(err){
           res.redirect('/overview');
         });
       });

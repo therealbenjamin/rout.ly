@@ -8,6 +8,7 @@ var datacount = {count: 0};
 
 exports.index = function(req, res){
   Buyer.findById(req.session.userId).populate('venues').exec(function(err, buyer){
+    console.log(buyer.venues);
     res.render('offer/index', {title: 'Rout.ly', user:buyer, venues: buyer.venues});
   });
 };
@@ -15,37 +16,43 @@ exports.index = function(req, res){
 exports.create = function(req, res){
 
   Buyer.findById(req.session.userId, function(err, buyer){
-
-    var offer1 = new Offer(req.body);
-
-    Offer.find(function(err, offers){
-      if (offers.length) {
-
-        forEach(offers, function(offer, index){
-          var done = this.async();
-          async.waterfall([
-            function(fn){m.compareOfferDistance(offer1, offer, buyer, offers, datacount, fn);},
-            function(data, fn){m.compareOfferTime(data, fn);},
-            function(data, fn){m.assessConflicts(data, fn);},
-            function(data, fn){m.assessSave(data, fn);}
-          ], function(err, result){
-            // console.log(result);
-            // console.log(err);
-            // console.log('-------trying the done fn--------');
-            done();
-          });
-        });
-
+    var newOffer = new Offer(req.body);
+    Offer.find().populate('venue').exec(function(err,offers){
+      if(offers.length){
+        async.waterfall([
+          function(fn){m.compareOfferDistance(newOffer, offers, buyer, fn);},
+          function(geoConflicts,fn){
+            if(!geoConflicts.length){
+              newOffer.save(function(err,result){
+                buyer.offers.push(result.id);
+                buyer.save(function(err){
+                  res.redirect('/overview?status=newoffer');
+                });
+              });
+            } else {
+              m.compareOfferTime(newOffer, geoConflicts, fn);
+            }
+          }
+          // ,
+          // function(timeConflicts,fn){
+          //   if(!timeConflicts.length){
+          //     newOffer.save(function(err){
+          //       res.redirect('/overview?status=newoffer');
+          //     });
+          //   } else {
+          //     m.assessConflicts(newOffer, timeConflicts, fn);
+          //   }
+          // }
+        ]);
       } else {
-        offer1.save(function(err, offer){
-          console.log('----------------this is save 3--------------');
-        });
-        buyer.offers.push(offer1);
-        buyer.save(function(err, buyer){
+        newOffer.save(function(err, offer){
+          buyer.offers.push(offer.id);
+          buyer.save(function(err, buyer){
+            res.redirect('/overview?status=newoffer');
+          });
         });
       }
     });
-    res.redirect('/overview');
   });
 };
 
