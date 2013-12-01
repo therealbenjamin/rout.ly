@@ -6,17 +6,26 @@ block content
     .small-12.columns
       include ../template/authentication-form
   .row
-    .small-6.columns
-      h1.subheader rout.ly
-    .small-6.columns
+    .small-12.columns
+      h3 Welcome to the Future of Music Booking.
   .row
     .small-12.columns
-      h2 WELCOME!!!!!
+      p.homepage <strong>Rout.ly</strong> is a web application that creates an efficient interface between booking agents and talent buyers in order to automate repetitive tasks inherent to the booking process and pass savings on to artists and promoters.
+      p.homepage New to <strong>Rout.ly</strong>? Sumbit an inquiry if you have questions, or create and account to get started.
   .row
     .small-12.columns
-      p dsfjkllkjsdfjklsdkljfsjdflkjsdlfkjsdlkfjslkdjf sdlfjksdlfk sldkfj sdlfjsld fsdlkfj sldkfj sldfjsldkfj sldkfj sdlfkjsdl fsldkfj sdlfksdlf sldkjf sldfj sdflkjsdf lsdjflsdf jslkdfj sd.
+      ul(data-orbit)
+        li
+          img(src='./images/prince.jpg')
+          .orbit-caption Prince and the Revolution
+        li
+          img(src='./images/rick.gif')
+          .orbit-caption Rick James
+        li
+          img(src='./images/arcade-fire-bowie.png')
+          .orbit-caption Arcade Fire featuring David Bowie
   .row
     .small-6.columns
-      a.button.expand(href='/inquiry') Submit Inquiry
+      a.button.expand.home_button(href='/inquiry') Submit Inquiry
     .small-6.columns
-      a.button.expand(href='/createaccount') Create Account
+      a.button.expand.home_button(href='/createaccount') Create Account
