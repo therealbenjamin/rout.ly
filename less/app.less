@@ -71,18 +71,21 @@ p#terms{
 }
 
 #map-canvas{
-  height: 450px;
+  height: 457px;
   width: 80%;
   margin-left: 100px;
   // border: 10px solid gray;
-  margin-top: -450px;
+  margin-top: -457px;
 }
 
-
+#venuediv{
+background-color: white;
+width: 580px;
+height: 200px !important;
+overflow-y: scroll !important;
 table#venues{
 display: table;
 table-layout: fixed;
-width: 580px;
   tr {
     th{
       width: 11%;
@@ -92,18 +95,26 @@ width: 580px;
     }
   }
 }
+}
 
+
+
+#offerdiv{
+background-color: pink !important;
+width: 580px;
+height: 200px !important;
+overflow-y: scroll !important;
 table#offers{
 display: table;
 table-layout: fixed;
-width: 580px;
   tr {
     th{
       width: 9%;
     }
     td{
       width: 9%;
-      overflow-x: scroll;
+      overflow-x: hidden;
     }
   }
+}
 }
