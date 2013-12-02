@@ -14,6 +14,7 @@ function initialize(){
   $(function(){$('#accordion').accordion();});
   $('#authentication-button').on('click', clickAuth);
   $('form#authentication').on('submit', clickLogin);
+  getOfferStatus();
 }
 
 
@@ -56,11 +57,9 @@ function initializeMap(){
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     console.log(map);
     geocoder = new google.maps.Geocoder();
-
     htmlDrawMapMarkers();
   }
 }
@@ -129,4 +128,18 @@ function htmlLogout(data){
   $('#authentication-button').text('Login');
   $('#authentication-button').removeClass('alert');
   window.location.href = '/';
+}
+
+function getOfferStatus(){
+  var status = getUrlVars()['status'];
+  if(status){
+    switch(status){
+      case 'offerdenied':
+        $('p#offerstatus').text('Your offer was denied due to a conflict with a confirmed show.');
+      break;
+      case 'newoffer':
+        $('p#offerstatus').text('Your offer has been successfully submitted for review');
+      break;
+    }
+  }
 }
