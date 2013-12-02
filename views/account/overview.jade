@@ -49,7 +49,7 @@ block content
                   td= offer.showDate
                   td= offer.daysPrior
                   td= offer.daysAfter
-                  td= offer.guarantee
+                  td= '$'+offer.guarantee+'.00'
                   - var venue = __.where(venues, {_id:offer.venue})
                   td=venue[0].name
                   td= offer.isConfirmed

@@ -83,7 +83,7 @@ exports.admin = function(req, res){
         Venue.find(function(err, venues){
           Offer.find(function(err, offers){
             Buyer.find(function(err, buyers){
-              res.render('account/admin', {user:buyer, buyers:buyers, venues:venues, offers:offers});
+              res.render('account/admin', {user:buyer, buyers:buyers, venues:venues, offers:offers, __:__});
             })
           });
         });

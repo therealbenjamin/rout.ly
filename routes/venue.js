@@ -5,7 +5,11 @@ var gm = require('googlemaps');
 
 exports.add = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
-    res.render('venues/create', {title: 'Rout.ly', user:buyer});
+    if (buyer) {
+      res.render('venues/create', {title: 'Rout.ly', user:buyer});
+    } else{
+      res.render('account/not-a-member');
+    };
   });
 };
 
