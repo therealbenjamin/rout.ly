@@ -8,8 +8,11 @@ var datacount = {count: 0};
 
 exports.index = function(req, res){
   Buyer.findById(req.session.userId).populate('venues').exec(function(err, buyer){
-    console.log(buyer.venues);
-    res.render('offer/index', {title: 'Rout.ly', user:buyer, venues: buyer.venues});
+    if (buyer) {
+      res.render('offer/index', {title: 'Rout.ly', user:buyer, venues: buyer.venues});
+    } else{
+        res.render('account/not-a-member');
+    };
   });
 };
 
@@ -81,7 +84,7 @@ exports.show = function(req, res){
 };
 
 exports.retrieve = function(req, res){
-  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
+  Buyer.findById(req.session.userId).populate('offers').populate('venues').exec(function(err, buyer){
     res.send(buyer);
   });
 };
