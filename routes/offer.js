@@ -14,7 +14,7 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-
+  var $conflicts = [];
   Buyer.findById(req.session.userId, function(err, buyer){
     var newOffer = new Offer(req.body);
     Offer.find().populate('venue').exec(function(err,offers){
@@ -32,17 +32,35 @@ exports.create = function(req, res){
             } else {
               m.compareOfferTime(newOffer, geoConflicts, fn);
             }
-          }
-          // ,
-          // function(timeConflicts,fn){
-          //   if(!timeConflicts.length){
-          //     newOffer.save(function(err){
-          //       res.redirect('/overview?status=newoffer');
-          //     });
-          //   } else {
-          //     m.assessConflicts(newOffer, timeConflicts, fn);
-          //   }
-          // }
+          },
+          function(timeConflicts,fn){
+            if(!timeConflicts.length){
+              newOffer.save(function(err){
+                res.redirect('/overview?status=newoffer');
+              });
+            } else {
+              $conflicts = timeConflicts;
+              m.assessConflicts(newOffer, timeConflicts, fn);
+            }
+          },
+          function(confirmConflict,fn){
+            if(confirmConflict){
+              res.redirect('/overview?status=offerdenied');
+            } else {
+              m.assessNewOfferConflicts(newOffer,$conflicts,fn);
+            }
+          },
+          function(newOffer,fn){
+            newOffer.save(function(err,offer){
+              if(offer){
+                buyer.offers.push(offer.id);
+                buyer.save(function(err, buyer){
+                  m.saveConflicts(offer,$conflicts,fn);
+                });
+              }
+            });
+          },
+          function(fn){res.redirect('/overview?status=newoffer');}
         ]);
       } else {
         newOffer.save(function(err, offer){

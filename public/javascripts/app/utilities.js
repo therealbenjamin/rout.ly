@@ -43,3 +43,11 @@ function sendAjaxRequest(url, data, verb, altVerb, event, successFn){
   $.ajax(options);
   if(event) {event.preventDefault();}
 }
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value){
+    vars[key] = value;
+  });
+  return vars;
+}

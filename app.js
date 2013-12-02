@@ -23,7 +23,7 @@ app.get('/', home.index);
 app.get('/createaccount', account.create);
 app.get('/newoffer', offer.index);
 app.get('/inquiry', inquiry.index);
-app.post('/inquiry', inquiry.accept)
+app.post('/inquiry', inquiry.accept);
 app.get('/overview', account.overview);
 app.post('/overview', account.new);
 app.get('/offer/:id', offer.show);
