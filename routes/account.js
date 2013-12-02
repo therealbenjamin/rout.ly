@@ -78,7 +78,14 @@ exports.redirect = function(req, res){
 exports.admin = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
       if (buyer.isAdmin) {
-        res.render('account/admin', {user:buyer});
+        Venue.find(function(err, venus){
+          Offer.find(function(err, offers){
+            Buyer.find(function(err, buyers){
+              res.render('account/admin', {user:buyer, buyers:buyers, venues:venues, offers:offers});
+            })
+          });
+        });
+
       } else{
         res.render('account/not-a-member');
       };

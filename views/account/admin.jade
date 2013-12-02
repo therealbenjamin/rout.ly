@@ -5,3 +5,53 @@ block content
   .row
     .small-12.columns
       h1 Admin Page
+  .row
+    .small-6.columns
+      h4 Venues
+      #venuediv
+        table#venues
+          thead
+            tr
+              th Name
+              th Address
+              th City
+              th State
+              th Office Phone
+              th Email
+          tbody
+            each venue in venues
+              tr
+                td= venue.name
+                td= venue.address
+                td= venue.city
+                td= venue.state
+                td= venue.officePhone
+                td= venue.email
+    .small-6.columns
+  .row#offerRow
+    .small-6.columns
+      h4 Offers
+      #offerdiv
+        table#offers
+          thead
+            tr
+              th Artist
+              th Date
+              th After
+              th Before
+              th Price
+              th Venue
+              th Confirmed
+          tbody
+            each offer in offers
+              tr
+                td= offer.artist
+                td= offer.showDate
+                td= offer.daysPrior
+                td= offer.daysAfter
+                td= offer.guarantee
+                td= offer.venue
+                td= offer.isConfirmed
+  .row
+    .small-6.small-offset-6.columns
+      #map-canvas
