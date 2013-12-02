@@ -54,7 +54,7 @@ function initializeMap(){
   if($('#map-canvas').length){
     var mapOptions = {
       center: new google.maps.LatLng(36.1667, -86.7833),
-      zoom: 12,
+      zoom: 3,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -68,34 +68,29 @@ function htmlDrawMapMarkers(){
 
   sendAjaxRequest('/retrieveoffers', {}, 'get', null, null, function(data, status){
     console.log(data);
-  //   for (var i = 0; i < data.offers.length; i++) {
-  //     var street = data.offers[i].address;
-  //     var city = data.offers[i].city;
-  //     var state = data.offers[i].state;
-  //     var zip = data.offers[i].zip;
-
-  //     var address = street + ' ' + city + ' ' + state + ', ' + zip;
-  //     codeAddress(address, data.offers[i]);
-  //   }
+    for (var i = 0; i < data.offers.length; i++) {
+      var venue = _.where(data.venues, {_id:data.offers[i].venue})
+      codeAddress(data.offers[i], venue);
+    }
   });
 }
 
-function codeAddress(address, offer) {
+function codeAddress(offer, venue) {
 
-  geocoder.geocode( { 'address': address}, function(results, status) {
-      var circleOptions ={
-        strokeColor: '#FF000',
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
-        fillColor: 'red',
-        fillOpacity: 0.65,
-        map: map,
-        center: results[0].geometry.location,
-        radius: (offer.radius * 1609.34)
-      };
-      var circle = new google.maps.Circle(circleOptions);
-      console.log(circle);
-    });
+
+    var circleOptions ={
+      strokeColor: '#FF000',
+      strokeOpacity: 0.8,
+      strokeWeight: 3,
+      fillColor: 'red',
+      fillOpacity: 0.65,
+      map: map,
+      center: new google.maps.LatLng(venue[0].lat, venue[0].lng),
+      radius: (offer.radius * 1609.34)
+    };
+    var circle = new google.maps.Circle(circleOptions);
+    console.log(circleOptions.center);
+
 }
 
 function socketConnected(data){

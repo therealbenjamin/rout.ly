@@ -81,7 +81,7 @@ exports.show = function(req, res){
 };
 
 exports.retrieve = function(req, res){
-  Buyer.findById(req.session.userId).populate('offers').exec(function(err, buyer){
+  Buyer.findById(req.session.userId).populate('offers').populate('venues').exec(function(err, buyer){
     res.send(buyer);
   });
 };

@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
-// var Offer = mongoose.model('Offer');
+var Offer = mongoose.model('Offer');
+var Venue = mongoose.model('Venue');
 var Buyer = mongoose.model('Buyer');
 var bcrypt = require('bcrypt');
+var __ = require('lodash');
 
 
 exports.create = function(req, res){
@@ -14,7 +16,7 @@ exports.create = function(req, res){
 exports.overview = function(req, res){
   Buyer.findById(req.session.userId).populate('venues').populate('offers').exec(function(err, buyer){
     if (buyer) {
-      res.render('account/overview', {title:'Rout.ly', user:buyer, offers: buyer.offers, venues:buyer.venues});
+      res.render('account/overview', {title:'Rout.ly', user:buyer, offers: buyer.offers, venues:buyer.venues, __:__});
     } else{
       res.redirect('/signup');
     }
@@ -78,7 +80,7 @@ exports.redirect = function(req, res){
 exports.admin = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
       if (buyer.isAdmin) {
-        Venue.find(function(err, venus){
+        Venue.find(function(err, venues){
           Offer.find(function(err, offers){
             Buyer.find(function(err, buyers){
               res.render('account/admin', {user:buyer, buyers:buyers, venues:venues, offers:offers});
