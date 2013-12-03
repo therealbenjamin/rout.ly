@@ -37,3 +37,8 @@ exports.save = function(req, res){
     });
   });
 };
+ exports.retrieve = function(req, res){
+  Venue.find(function(err, venues){
+    res.send(venues);
+  });
+ }

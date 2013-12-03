@@ -36,6 +36,7 @@ app.get('/addvenue', venue.add);
 app.post('/savevenue', venue.save);
 app.get('/signup', account.redirect);
 app.get('/admin', account.admin);
+app.get('/retrievevenues', venue.retrieve);
 
 
 // start server & socket.io

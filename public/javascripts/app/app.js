@@ -65,24 +65,39 @@ function initializeMap(){
 }
 
 function htmlDrawMapMarkers(){
-
   sendAjaxRequest('/retrieveoffers', {}, 'get', null, null, function(data, status){
     console.log(data);
+    if (!data[0]) {
     for (var i = 0; i < data.offers.length; i++) {
       var venue = _.where(data.venues, {_id:data.offers[i].venue})
       codeAddress(data.offers[i], venue);
-    }
+      }
+    } else{
+      sendAjaxRequest('/retrievevenues', {}, 'get', null, null, function(venues, status){
+       for (var i = 0; i < data.length; i++) {
+        var offer = data[i];
+        var venue =  _.where(venues, {_id:data[i].venue});
+        console.log(venue)
+        codeAddress(offer, venue);
+      };
+      });
+    };
   });
 }
 
 function codeAddress(offer, venue) {
-
+var fillcolor;
+if (offer.isConfirmed) {
+  fillcolor = 'green';
+} else{
+  fillcolor = 'red';
+};
 
     var circleOptions ={
       strokeColor: '#FF000',
       strokeOpacity: 0.8,
       strokeWeight: 3,
-      fillColor: 'red',
+      fillColor: fillcolor,
       fillOpacity: 0.65,
       map: map,
       center: new google.maps.LatLng(venue[0].lat, venue[0].lng),
