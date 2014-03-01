@@ -85,7 +85,13 @@ exports.show = function(req, res){
 
 exports.retrieve = function(req, res){
   Buyer.findById(req.session.userId).populate('offers').populate('venues').exec(function(err, buyer){
+    if (buyer.isAdmin) {
+      Offer.find(function(err, offers){
+        res.send(offers);
+      });
+    } else{
     res.send(buyer);
+    };
   });
 };
 

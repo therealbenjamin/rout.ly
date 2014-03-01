@@ -4,7 +4,7 @@ var Inquiry = mongoose.model('Inquiry');
 
 exports.index = function(req, res){
   Buyer.findById(req.session.userId, function(err, buyer){
-    console.log(req);
+
     res.render('inquiry/index', {title: 'Rout.ly', user:buyer});
   });
 };
