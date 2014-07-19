@@ -6,7 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "*",
+    "express": "3.4.3",
     "jade": "*",
     "express-less": "*",
     "lodash": "*",
@@ -16,7 +16,7 @@
     "colors": "*",
     "request": "*",
     "socket.io": "*",
-    "connect-redis": "*",
+    "connect-redis": "1.4.7",
     "require-dir": "*",
     "bcrypt": "*",
     "browser-logger": "*",
